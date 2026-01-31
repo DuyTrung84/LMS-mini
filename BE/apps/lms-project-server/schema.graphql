@@ -1,0 +1,479 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Course {
+  coverImage: String
+  createdAt: DateTime!
+  description: String
+  duration: Float
+  endDate: DateTime
+  enrollments(orderBy: [EnrollmentOrderByInput!], skip: Float, take: Float, where: EnrollmentWhereInput): [Enrollment!]!
+  id: String!
+  lessonCount: Float
+  lessons(orderBy: [LessonOrderByInput!], skip: Float, take: Float, where: LessonWhereInput): [Lesson!]!
+  startDate: DateTime
+  teacher: User
+  title: String
+  updatedAt: DateTime!
+}
+
+input CourseCreateInput {
+  coverImage: String
+  description: String
+  duration: Float
+  endDate: DateTime
+  enrollments: EnrollmentCreateNestedManyWithoutCoursesInput
+  lessonCount: Float
+  lessons: LessonCreateNestedManyWithoutCoursesInput
+  startDate: DateTime
+  teacher: UserWhereUniqueInput
+  title: String
+}
+
+input CourseCreateNestedManyWithoutUsersInput {
+  connect: [CourseWhereUniqueInput!]
+}
+
+input CourseListRelationFilter {
+  every: CourseWhereInput
+  none: CourseWhereInput
+  some: CourseWhereInput
+}
+
+input CourseOrderByInput {
+  coverImage: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  duration: SortOrder
+  endDate: SortOrder
+  id: SortOrder
+  lessonCount: SortOrder
+  startDate: SortOrder
+  teacherId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input CourseUpdateInput {
+  coverImage: String
+  description: String
+  duration: Float
+  endDate: DateTime
+  enrollments: EnrollmentUpdateManyWithoutCoursesInput
+  lessonCount: Float
+  lessons: LessonUpdateManyWithoutCoursesInput
+  startDate: DateTime
+  teacher: UserWhereUniqueInput
+  title: String
+}
+
+input CourseUpdateManyWithoutUsersInput {
+  connect: [CourseWhereUniqueInput!]
+  disconnect: [CourseWhereUniqueInput!]
+  set: [CourseWhereUniqueInput!]
+}
+
+input CourseWhereInput {
+  coverImage: StringNullableFilter
+  description: StringNullableFilter
+  duration: FloatNullableFilter
+  endDate: DateTimeNullableFilter
+  enrollments: EnrollmentListRelationFilter
+  id: StringFilter
+  lessonCount: IntNullableFilter
+  lessons: LessonListRelationFilter
+  startDate: DateTimeNullableFilter
+  teacher: UserWhereUniqueInput
+  title: StringNullableFilter
+}
+
+input CourseWhereUniqueInput {
+  id: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+type Enrollment {
+  course: Course
+  createdAt: DateTime!
+  id: String!
+  student: User
+  updatedAt: DateTime!
+}
+
+input EnrollmentCreateInput {
+  course: CourseWhereUniqueInput
+  student: UserWhereUniqueInput
+}
+
+input EnrollmentCreateNestedManyWithoutCoursesInput {
+  connect: [EnrollmentWhereUniqueInput!]
+}
+
+input EnrollmentCreateNestedManyWithoutUsersInput {
+  connect: [EnrollmentWhereUniqueInput!]
+}
+
+input EnrollmentListRelationFilter {
+  every: EnrollmentWhereInput
+  none: EnrollmentWhereInput
+  some: EnrollmentWhereInput
+}
+
+input EnrollmentOrderByInput {
+  courseId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  studentId: SortOrder
+  updatedAt: SortOrder
+}
+
+input EnrollmentUpdateInput {
+  course: CourseWhereUniqueInput
+  student: UserWhereUniqueInput
+}
+
+input EnrollmentUpdateManyWithoutCoursesInput {
+  connect: [EnrollmentWhereUniqueInput!]
+  disconnect: [EnrollmentWhereUniqueInput!]
+  set: [EnrollmentWhereUniqueInput!]
+}
+
+input EnrollmentUpdateManyWithoutUsersInput {
+  connect: [EnrollmentWhereUniqueInput!]
+  disconnect: [EnrollmentWhereUniqueInput!]
+  set: [EnrollmentWhereUniqueInput!]
+}
+
+input EnrollmentWhereInput {
+  course: CourseWhereUniqueInput
+  id: StringFilter
+  student: UserWhereUniqueInput
+}
+
+input EnrollmentWhereUniqueInput {
+  id: String!
+}
+
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Lesson {
+  content: String
+  course: Course
+  createdAt: DateTime!
+  id: String!
+  progresses(orderBy: [ProgressOrderByInput!], skip: Float, take: Float, where: ProgressWhereInput): [Progress!]!
+  title: String
+  typeField: String
+  updatedAt: DateTime!
+}
+
+input LessonCreateInput {
+  content: String
+  course: CourseWhereUniqueInput
+  progresses: ProgressCreateNestedManyWithoutLessonsInput
+  title: String
+  typeField: String
+}
+
+input LessonCreateNestedManyWithoutCoursesInput {
+  connect: [LessonWhereUniqueInput!]
+}
+
+input LessonListRelationFilter {
+  every: LessonWhereInput
+  none: LessonWhereInput
+  some: LessonWhereInput
+}
+
+input LessonOrderByInput {
+  content: SortOrder
+  courseId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  title: SortOrder
+  typeField: SortOrder
+  updatedAt: SortOrder
+  videoUrl: SortOrder
+}
+
+input LessonUpdateInput {
+  content: String
+  course: CourseWhereUniqueInput
+  progresses: ProgressUpdateManyWithoutLessonsInput
+  title: String
+  typeField: String
+}
+
+input LessonUpdateManyWithoutCoursesInput {
+  connect: [LessonWhereUniqueInput!]
+  disconnect: [LessonWhereUniqueInput!]
+  set: [LessonWhereUniqueInput!]
+}
+
+input LessonWhereInput {
+  content: StringNullableFilter
+  course: CourseWhereUniqueInput
+  id: StringFilter
+  progresses: ProgressListRelationFilter
+  title: StringNullableFilter
+  typeField: StringNullableFilter
+  videoUrl: StringNullableFilter
+}
+
+input LessonWhereUniqueInput {
+  id: String!
+}
+
+type Mutation {
+  createCourse(data: CourseCreateInput!): Course!
+  createEnrollment(data: EnrollmentCreateInput!): Enrollment!
+  createLesson(data: LessonCreateInput!): Lesson!
+  createProgress(data: ProgressCreateInput!): Progress!
+  createUser(data: UserCreateInput!): User!
+  deleteCourse(where: CourseWhereUniqueInput!): Course!
+  deleteEnrollment(where: EnrollmentWhereUniqueInput!): Enrollment!
+  deleteLesson(where: LessonWhereUniqueInput!): Lesson!
+  deleteProgress(where: ProgressWhereUniqueInput!): Progress!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  updateCourse(data: CourseUpdateInput!, where: CourseWhereUniqueInput!): Course!
+  updateEnrollment(data: EnrollmentUpdateInput!, where: EnrollmentWhereUniqueInput!): Enrollment!
+  updateLesson(data: LessonUpdateInput!, where: LessonWhereUniqueInput!): Lesson!
+  updateProgress(data: ProgressUpdateInput!, where: ProgressWhereUniqueInput!): Progress!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Progress {
+  completed: Boolean
+  completedAt: DateTime
+  createdAt: DateTime!
+  id: String!
+  lesson: Lesson
+  student: User
+  updatedAt: DateTime!
+}
+
+input ProgressCreateInput {
+  completed: Boolean
+  completedAt: DateTime
+  lesson: LessonWhereUniqueInput
+  student: UserWhereUniqueInput
+}
+
+input ProgressCreateNestedManyWithoutLessonsInput {
+  connect: [ProgressWhereUniqueInput!]
+}
+
+input ProgressCreateNestedManyWithoutUsersInput {
+  connect: [ProgressWhereUniqueInput!]
+}
+
+input ProgressListRelationFilter {
+  every: ProgressWhereInput
+  none: ProgressWhereInput
+  some: ProgressWhereInput
+}
+
+input ProgressOrderByInput {
+  completed: SortOrder
+  completedAt: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  lessonId: SortOrder
+  studentId: SortOrder
+  updatedAt: SortOrder
+}
+
+input ProgressUpdateInput {
+  completed: Boolean
+  completedAt: DateTime
+  lesson: LessonWhereUniqueInput
+  student: UserWhereUniqueInput
+}
+
+input ProgressUpdateManyWithoutLessonsInput {
+  connect: [ProgressWhereUniqueInput!]
+  disconnect: [ProgressWhereUniqueInput!]
+  set: [ProgressWhereUniqueInput!]
+}
+
+input ProgressUpdateManyWithoutUsersInput {
+  connect: [ProgressWhereUniqueInput!]
+  disconnect: [ProgressWhereUniqueInput!]
+  set: [ProgressWhereUniqueInput!]
+}
+
+input ProgressWhereInput {
+  completed: BooleanNullableFilter
+  completedAt: DateTimeNullableFilter
+  id: StringFilter
+  lesson: LessonWhereUniqueInput
+  student: UserWhereUniqueInput
+}
+
+input ProgressWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  course(where: CourseWhereUniqueInput!): Course
+  courses(orderBy: [CourseOrderByInput!], skip: Float, take: Float, where: CourseWhereInput): [Course!]!
+  enrollment(where: EnrollmentWhereUniqueInput!): Enrollment
+  enrollments(orderBy: [EnrollmentOrderByInput!], skip: Float, take: Float, where: EnrollmentWhereInput): [Enrollment!]!
+  lesson(where: LessonWhereUniqueInput!): Lesson
+  lessons(orderBy: [LessonOrderByInput!], skip: Float, take: Float, where: LessonWhereInput): [Lesson!]!
+  progress(where: ProgressWhereUniqueInput!): Progress
+  progresses(orderBy: [ProgressOrderByInput!], skip: Float, take: Float, where: ProgressWhereInput): [Progress!]!
+  user(where: UserWhereUniqueInput!): User
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  createdAt: DateTime!
+  email: String
+  enrollments(orderBy: [EnrollmentOrderByInput!], skip: Float, take: Float, where: EnrollmentWhereInput): [Enrollment!]!
+  firstName: String
+  id: String!
+  lastName: String
+  progresses(orderBy: [ProgressOrderByInput!], skip: Float, take: Float, where: ProgressWhereInput): [Progress!]!
+  roles: JSON!
+  teachingCourses(orderBy: [CourseOrderByInput!], skip: Float, take: Float, where: CourseWhereInput): [Course!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  email: String
+  enrollments: EnrollmentCreateNestedManyWithoutUsersInput
+  firstName: String
+  lastName: String
+  password: String!
+  progresses: ProgressCreateNestedManyWithoutUsersInput
+  roles: JSON!
+  teachingCourses: CourseCreateNestedManyWithoutUsersInput
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  email: String
+  enrollments: EnrollmentUpdateManyWithoutUsersInput
+  firstName: String
+  lastName: String
+  password: String
+  progresses: ProgressUpdateManyWithoutUsersInput
+  roles: JSON
+  teachingCourses: CourseUpdateManyWithoutUsersInput
+  username: String
+}
+
+input UserWhereInput {
+  email: StringNullableFilter
+  enrollments: EnrollmentListRelationFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  progresses: ProgressListRelationFilter
+  teachingCourses: CourseListRelationFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
